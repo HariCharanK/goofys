@@ -41,6 +41,8 @@ type GCS3MultipartBlobCommitInput struct {
 }
 
 func NewGCS3(bucket string, flags *FlagStorage, config *S3Config) (*GCS3, error) {
+	s3Log.Debugf("Using GCS S3 backend - S3 interoperability mode")
+
 	s3Backend, err := NewS3(bucket, flags, config)
 	if err != nil {
 		return nil, err

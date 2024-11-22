@@ -87,6 +87,8 @@ func (g *GCSBackend) Init(key string) error {
 		MaxKeys: PUInt32(1),
 		Prefix:  PString(prefix),
 	})
+
+	g.logger.Debugf("Using GCS Backend")
 	g.logger.Debugf("INIT GCS: ListStatus = %s", getDebugResponseStatus(err))
 	if err == syscall.ENXIO {
 		return fmt.Errorf("bucket %v does not exist", g.bucketName)
